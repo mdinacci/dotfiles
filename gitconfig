@@ -1,0 +1,23 @@
+[user]
+	name = Marco Dinacci
+	email = marco.dinacci@gmail.com
+[core]
+	excludesfile = /Users/marco/.gitignore
+	autocrlf = input
+[alias]
+    uncommit = reset --soft HEAD^ # go back before last commit
+    filelog = log -u
+    st = status
+    logp = log --pretty=oneline # print log statements in one line
+    unstage = reset HEAD # unstage a file previously added
+    out = log origin/master..master # equivalent of hg outgoing
+    ca = commit -am # commit all with message
+    amend = commit --amend # amend last commit
+    last = diff HEAD^ # diff last committed change
+    revert = checkout -- # drop all changes to a file, same as hg revert
+[diff]
+        tool = opendiff
+[difftool "opendiff"]
+        cmd = opendiff -y
+[http]
+	sslVerify = false

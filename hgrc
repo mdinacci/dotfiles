@@ -1,0 +1,23 @@
+[ui]
+username = Marco Dinacci <marco.dinacci@gmail.com>
+verbose = True
+commitsubrepos = false
+
+[defaults]
+qnew = -Ue
+
+[extensions]
+fetch =
+graphlog = 
+hgext.extdiff =
+hgk=
+
+[diff]
+showfunc = 1
+unified = 8 
+
+[extdiff]
+cmd.vdiff = opendiff
+
+[hooks]
+changegroup=hg diff --stat -r $HG_NODE -r tip
