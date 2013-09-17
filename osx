@@ -1,0 +1,20 @@
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Show hidden files
+defaults write com.apple.Finder AppleShowAllFiles -bool false
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# # Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Group windows by application in Mission Control
+defaults write com.apple.dock "expose-group-by-app" -bool true
