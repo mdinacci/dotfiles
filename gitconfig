@@ -15,9 +15,30 @@
     amend = commit --amend # amend last commit
     last = diff HEAD^ # diff last committed change
     revert = checkout -- # drop all changes to a file, same as hg revert
-[diff]
-        tool = opendiff
-[difftool "opendiff"]
-        cmd = opendiff -y
+    graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    graphs = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    gs = !"git graphs"
+    stat = log --stat
+#[diff]
+#    tool = opendiff
+#[difftool "opendiff"]
+#    cmd = opendiff -y
+#    prompt = false
 [http]
+    # required by egit in Eclipse. Shitty tool.
 	sslVerify = false
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
