@@ -2,43 +2,43 @@
 	name = Marco Dinacci
 	email = marco.dinacci@gmail.com
 [core]
-	excludesfile = /Users/marco/.gitignore
-	autocrlf = input
+	excludesfile = /Users/marco/.gitignore_global
+	compression = 0
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [alias]
-    uncommit = reset --soft HEAD^ # go back before last commit
-    filelog = log -u
+    co = checkout
+    cam = commit -a -m
+    ci = commit
     st = status
-    logp = log --pretty=oneline # print log statements in one line
-    unstage = reset HEAD # unstage a file previously added
-    out = log origin/master..master # equivalent of hg outgoing
-    ca = commit -am # commit all with message
-    amend = commit --amend # amend last commit
-    last = diff HEAD^ # diff last committed change
-    revert = checkout -- # drop all changes to a file, same as hg revert
-    graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    graphs = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    gs = !"git graphs"
-    stat = log --stat
-#[diff]
-#    tool = opendiff
-#[difftool "opendiff"]
-#    cmd = opendiff -y
-#    prompt = false
-[http]
-    # required by egit in Eclipse. Shitty tool.
-	sslVerify = false
-[color]
-  ui = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    last = log -1 HEAD
+    unstage = reset HEAD --
+    ldiff = diff --cached HEAD^
+    patchout = format-patch master --stdout
+    patchin = git am --signoff
+    # List commits in short form
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    # List commits showing changed files
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    # Oneline commits with relative dates
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    # Show modified files in last commit:
+    dl = "!git ll -1"
+    # Show differences from last commit
+    dlc = diff --cached HEAD^
+    # List all aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+	logtree = log --graph --oneline --decorate --all
+    plr = pull —rebase
+[push]
+	default = simple
+[diff]
+	tool = opendiff
+[status]
+	submoduleSummary = true
